@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAC CLASSROOM</title>
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+</head>
+
+<body>
+     <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="logo">
+            <img src="./assets/images/image.png" alt="Logo">
+        </div>
+        <div class="loader"></div> 
+
+        <h1>AAC WEB-APPLICATION</h1>
+        <div class="loader"></div> 
+    </div>
+
+    <div class="nav">
+        <nav>
+            <div class="container">
+                <div class="menu" id="menu">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="sidenav minimized" id="sideNav">
+                    <a href="#" id="home">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        <span>Calendar</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="school-outline"></ion-icon>
+                        <span>Enrolled</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="archive-outline"></ion-icon>
+                        <span>Archived classes</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="settings-outline"></ion-icon>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span>Profile</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+            <div class="headings" id="headings">
+                <div class="logo">
+                    <div class="l1">
+                        <img src="./assets/images/image.png" alt="">
+                        <h2>AAC Classroom</h2>
+                    </div>
+                    <div class="l2">
+                        <ion-icon name="add-outline" id="plusIcon" onclick="toggleForm()"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <hr>
+    </div>
+
+    <div class="createclasses" id="createclasses">
+        <form onsubmit="handleSubmit(event)">
+            <div class="f1">
+                <input type="text" placeholder="Enter the subject name">
+            </div>
+            <div class="f1">
+                <input type="text" placeholder="Enter the SEM">
+            </div>
+            <div class="f1">
+                <input type="text" placeholder="Enter the year">
+            </div>
+            <div class="btn">
+                <button type="submit">Create</button>
+                <button type="reset" onclick="resetForm()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Overlay to detect clicks outside of the sidenav -->
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        const toggleBtn = document.getElementById('menu');
+        const sidenav = document.getElementById('sideNav');
+        const overlay = document.getElementById('overlay');
+        const content = document.getElementById('content');
+        const plusIcon = document.getElementById('plusIcon');
+        const formContainer = document.getElementById('createclasses');
+
+        toggleBtn.addEventListener('click', function () {
+            sidenav.classList.toggle('show');
+            sidenav.classList.toggle('minimized');
+            overlay.classList.toggle('show');
+        });
+
+        overlay.addEventListener('click', function () {
+            sidenav.classList.remove('show');
+            sidenav.classList.add('minimized');
+            overlay.classList.remove('show');
+        });
+
+        function toggleForm() {
+            if (formContainer.style.display === "none" || formContainer.style.display === "") {
+                formContainer.style.display = "block"; // Show the form
+                plusIcon.classList.add('active'); // Change the plus icon to blue
+            } else {
+                formContainer.style.display = "none"; // Hide the form
+                plusIcon.classList.remove('active'); // Revert the plus icon color
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            formContainer.style.display = "none"; // Hide the form
+            plusIcon.classList.remove('active'); // Revert the plus icon color
+            alert("Form submitted successfully!"); // Show success message
+        }
+
+        function resetForm() {
+            formContainer.style.display = "none"; // Hide the form
+            plusIcon.classList.remove('active'); // Revert the plus icon color
+        }
+    </script>
+
+<!-- splash screen script -->
+
+<script defer>
+    // JavaScript to hide the splash screen after a delay
+window.addEventListener('load', function() {
+const splashScreen = document.getElementById('splash-screen');
+const mainContent = document.getElementById('main-content');
+
+// Set a timeout to hide the splash screen after 3 seconds
+setTimeout(function() {
+    splashScreen.style.display = 'none';
+    mainContent.style.display = 'block';
+}, 3000); // 3000ms = 3 seconds
+});
+
+</script>
+
+</body>
+
+</html>
